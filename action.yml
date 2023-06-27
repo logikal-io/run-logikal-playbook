@@ -24,15 +24,16 @@ runs:
       shell: bash
       run: |-
         git config --global advice.detachedHead false
-        git clone https://github.com/logikal-io/ansible-public-playbooks.git
-        cd ansible-public-playbooks
+        git clone https://github.com/logikal-io/ansible-public-playbooks.git \
+          "/tmp/ansible-public-playbooks"
+        cd /tmp/ansible-public-playbooks
         git checkout ${{ inputs.version }}
 
     - name: Install Ansible
       uses: logikal-io/make-orb@v1
       with:
         name: ansible-public-playbooks
-        working-directory: ansible-public-playbooks
+        working-directory: /tmp/ansible-public-playbooks
 
     - name: Run roles
       shell: bash
