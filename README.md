@@ -16,6 +16,7 @@ steps:
 Inputs
 ------
 `roles`: Required, a comma-separated list of the roles to run.
+
 `vars`: Optional, the variables to set as a string-encoded JSON.
 
 License
