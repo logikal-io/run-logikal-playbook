@@ -25,8 +25,8 @@ runs:
       run: |-
         git config --global advice.detachedHead false
         git clone https://github.com/logikal-io/ansible-public-playbooks.git
-        git checkout ${{ inputs.version }}
         cd ansible-public-playbooks
+        git checkout ${{ inputs.version }}
 
     - name: Install Ansible
       uses: logikal-io/make-orb@v1
