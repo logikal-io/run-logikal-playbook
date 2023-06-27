@@ -32,6 +32,7 @@ runs:
       uses: logikal-io/make-orb@v1
       with:
         name: ansible-public-playbooks
+        working-directory: ansible-public-playbooks
 
     - name: Run roles
       shell: bash
