@@ -1,0 +1,44 @@
+name: Run Logikal Playbook
+description: Run a Logikal Ansible playbook
+branding:
+  icon: zap
+  color: blue
+
+inputs:
+  roles:
+    description: The roles to run (comma-separated list)
+    required: true
+  vars:
+    description: The variables to set (string-encoded JSON)
+    required: false
+    default: '{}'
+  version:
+    description: The playbook repository version to use
+    required: false
+    default: v1
+
+runs:
+  using: composite
+  steps:
+    - name: Download playbooks
+      shell: bash
+      run: |-
+        git config --global advice.detachedHead false
+        git clone https://github.com/logikal-io/ansible-public-playbooks.git
+        git checkout ${{ inputs.version }}
+        cd ansible-public-playbooks
+
+    - name: Install Ansible
+      uses: logikal-io/make-orb@v1
+      with:
+        name: ansible-public-playbooks
+
+    - name: Run roles
+      shell: bash
+      env:
+        roles: ${{ inputs.roles }}
+        vars: ${{ inputs.vars }}
+      run: |-
+        roles_args=''
+        IFS=','; for role in ${roles// /}; do roles_args+="-r ${role} "; done; unset IFS;
+        orb ansible-public-playbooks -c "./run-roles ${roles_args}-v '${vars}'"
