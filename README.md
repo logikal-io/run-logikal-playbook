@@ -16,8 +16,16 @@ steps:
 Inputs
 ------
 `roles`: Required, a comma-separated list of the roles to run.
+The available roles can be found in the
+[ansible-public-playbooks](https://github.com/logikal-io/ansible-public-playbooks/tree/main/roles)
+repository.
 
 `vars`: Optional, the variables to set as a string-encoded JSON.
+The available variables can be found in the `vars/main.yml` file of the appropriate role.
+
+`version`: Optional, the
+[ansible-public-playbooks](https://github.com/logikal-io/ansible-public-playbooks/releases)
+repository version to use.
 
 License
 -------
