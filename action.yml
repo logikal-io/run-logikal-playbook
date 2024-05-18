@@ -15,7 +15,7 @@ inputs:
   version:
     description: The playbook repository version to use
     required: false
-    default: v1
+    default: v2
 
 runs:
   using: composite
