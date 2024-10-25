@@ -7,7 +7,7 @@ Usage
 -----
 ```yaml
 steps:
-  - uses: logikal-io/run-logikal-playbook@v1
+  - uses: logikal-io/run-logikal-playbook@v2
     with:
       roles: role1, role2, ...
       vars: '{"key1": "value1", "key2": "value2", ...}'
